@@ -1,11 +1,11 @@
 apiVersion: newide.studio.dataleap.volc/v1
 kind: Pipeline
 metadata:
-  name: New_pipeline_2026_10_17_15_39_59
+  name: daiy_job
 spec:
-  displayName: New_pipeline_2026_10_17_15_39_59
+  displayName: daiy_job
   description: ''
-  runAs: User/83146716
+  runAs: ${profile:run_as.current_user}
   trigger:
     type: SCHEDULED
     pauseStatus: UNPAUSED
@@ -17,7 +17,7 @@ spec:
       type: notebook
       source: WORKSPACE
       path: >-
-        /Workspace/Private/IAM_Users/lihaitao.rqwm-83146716/bundle_project/codes/notebooks/nb1.ipynb
+        /Workspace/DMP/bundle_pro_benz/codes/notebooks/nb1.ipynb
       kernelType: emr_serverless_spark_python
       emrAuthType: AK_SK
       engineQueue: ${profile:engine_queue.emr_serverless.serverless_default.公共队列-Default}
