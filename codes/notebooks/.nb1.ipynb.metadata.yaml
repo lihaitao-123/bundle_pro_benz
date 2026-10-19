@@ -1,0 +1,25 @@
+apiVersion: newide.studio.dataleap.volc/v1
+kind: Script
+metadata:
+  name: 82313f31-d405-4547-876b-2cfe5dbaf7d5
+spec:
+  emrAuthType: AK_SK
+  sparkParam:
+    sparkConf:
+      - key: serverless.spark.access.key
+        value: '{{ak}}'
+      - key: serverless.spark.secret.key
+        value: '{{sk}}'
+  kernelType: emr_serverless_spark_python
+  executeParam:
+    image:
+      imageUrl: >-
+        image-repo-cn-beijing.cr.volces.com/emr-serverless-spark/spark:3.5.1-py3.12-ubuntu20.04-802
+    cpuCores: 1
+    memoryMb: 4096
+  parameterValues: {}
+  resources: []
+  computeResourceParam:
+    queue: 公共队列-Default
+    execGroupId: 0
+  type: notebook

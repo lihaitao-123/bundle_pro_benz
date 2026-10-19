@@ -1,0 +1,42 @@
+apiVersion: newide.studio.dataleap.volc/v1
+kind: Pipeline
+metadata:
+  name: New_pipeline_2026_10_17_15_39_59
+spec:
+  displayName: New_pipeline_2026_10_17_15_39_59
+  description: ''
+  runAs: User/83146716
+  trigger:
+    type: SCHEDULED
+    pauseStatus: UNPAUSED
+    frequency: daily
+    cronExpression: 23 00 * * *
+    priority: d5
+  activities:
+    - name: New_Job_1
+      type: notebook
+      source: WORKSPACE
+      path: >-
+        /Workspace/Private/IAM_Users/lihaitao.rqwm-83146716/bundle_project/codes/notebooks/nb1.ipynb
+      kernelType: emr_serverless_spark_python
+      emrAuthType: AK_SK
+      engineQueue: ${profile:engine_queue.emr_serverless.serverless_default.公共队列-Default}
+      sparkConf:
+        - key: serverless.spark.access.key
+          value: '{{ak}}'
+        - key: serverless.spark.secret.key
+          value: '{{sk}}'
+      executeParam:
+        image:
+          imageUrl: >-
+            image-repo-cn-beijing.cr.volces.com/emr-serverless-spark/spark:3.5.1-py3.12-ubuntu20.04-802
+        cpuCores: 1
+        memoryMb: 4096
+      parameters: []
+      resources: []
+      dataOutputs: []
+      position:
+        x: 10
+        'y': 40
+      engineCluster: serverless_default
+  schedulingResourceGroupId: 1009
